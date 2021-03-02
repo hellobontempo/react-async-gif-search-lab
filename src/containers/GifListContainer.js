@@ -8,16 +8,13 @@ export default class GifListContainer extends React.Component {
         gifs: []
     }
     componentDidMount(query){
-        //url = https://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=RjKiEW4mmYzlDW602cuPiRQ0TIUGjv2X&rating=g
-        
-        ////api_key RjKiEW4mmYzlDW602cuPiRQ0TIUGjv2X
+        console.log(query)
         fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=RjKiEW4mmYzlDW602cuPiRQ0TIUGjv2X&rating=g`)
             .then (resp => resp.json())
                 .then (json => this.setState({gifs: json.data.slice(0,3)}))
     }
 
     handleSubmit = (event) => {
-        console.log(event)
         this.componentDidMount(event)
     }
 
